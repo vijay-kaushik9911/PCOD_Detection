@@ -1,0 +1,23 @@
+# Logs
+logs/
+*.log
+
+# Temporary files
+*.tmp
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Node.js dependencies
+node_modules/
+
+# Python virtual environment
+venv/
+
+# Compiled files
+*.pyc
+__pycache__/
+
+# Environment variables
+.env
