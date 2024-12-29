@@ -70,6 +70,7 @@ def predictres():
 
             # Predict using CNN
             cnn_result = cnn.predict(img)
+            cnn_result[0][0] = 1-cnn_result[0][0] 
             
             # Use ANN for input data prediction
             ann_prediction = ann.predict(input_data_scaled)
@@ -82,14 +83,24 @@ def predictres():
             print("\n\n\n **********************************\n\n\n")
 
             # Check if prediction is above threshold (example threshold = 0.5)
-            prediction = 'not_infected' if final_prediction[0][0] > 0.5 else 'infected'
+            # prediction = 'infected' if final_prediction[0][0] > 0.5 else 'not_infected'
+
+            if(final_prediction[0][0]>0.5):
+                prediction = "Your results suggest the presence of PCOS indicators. Please consult a healthcare professional for further guidance."
+            else:
+                prediction = "Your results indicate no significant signs of PCOS. Keep prioritizing your health!"
+
 
         else:
             # Use only ANN for prediction (if no image is uploaded)
             ann_prediction = ann.predict(input_data_scaled)
             
             # Check prediction result for ANN
-            prediction = 'not_infected' if ann_prediction[0][0] > 0.5 else 'infected'
+            # prediction = 'infected' if ann_prediction[0][0] > 0.5 else 'not_infected'
+            if(final_prediction[0][0]>0.5):
+                prediction = "Your results suggest the presence of PCOS indicators. Please consult a healthcare professional for further guidance."
+            else:
+                prediction = "Your results indicate no significant signs of PCOS. Keep prioritizing your health!"
 
         # Render the results page with the prediction result
         return render_template('results.html', prediction=prediction)
