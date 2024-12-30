@@ -97,7 +97,7 @@ def predictres():
             
             # Check prediction result for ANN
             # prediction = 'infected' if ann_prediction[0][0] > 0.5 else 'not_infected'
-            if(final_prediction[0][0]>0.5):
+            if(ann_prediction[0][0]>0.5):
                 prediction = "Your results suggest the presence of PCOS indicators. Please consult a healthcare professional for further guidance."
             else:
                 prediction = "Your results indicate no significant signs of PCOS. Keep prioritizing your health!"
