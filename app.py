@@ -9,7 +9,7 @@ from tensorflow.keras.models import load_model  # type: ignore
 from io import BytesIO  # Import BytesIO
 
 # Initialize Flask app
-app = Flask(__name__)
+app = Flask(__name__, template_folder="templates", static_folder="static")
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 # Load the trained model (assuming you've saved it as an H5 file)
@@ -109,6 +109,9 @@ def predictres():
     except Exception as e:
         return jsonify({'error': str(e)})
 
-if __name__ == "__main__":
+# if __name__ == "__main__":
     # app.run(debug=True, host='0.0.0.0', port=5001)
-    app.run()
+    # app.run()
+
+if __name__ == "__main__":
+    app.run(debug=False, host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
