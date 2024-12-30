@@ -7,9 +7,11 @@ from tensorflow.keras.preprocessing import image  # type: ignore
 from sklearn.preprocessing import StandardScaler
 from tensorflow.keras.models import load_model  # type: ignore
 from io import BytesIO  # Import BytesIO
+import logging
 
 # Initialize Flask app
 app = Flask(__name__, template_folder="templates", static_folder="static")
+app.logger.setLevel(logging.DEBUG)
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 # Load the trained model (assuming you've saved it as an H5 file)
@@ -30,6 +32,7 @@ def preprocess_image(image_file):
 # Route to render the index page (Frontend form)
 @app.route('/')
 def index():
+    app.logger.info('Index route is hit')
     return render_template('index.html')  # Points to index.html template
 
 # Route to predict page
