@@ -80,6 +80,17 @@ PCOD_Detection/
     └── results.html
 ```
 
+## Application Screenshots
+
+### Home Page
+![Home Page](frontend_images/home.png)
+
+### Prediction Form
+![Prediction Form](frontend_images/predict_form.png)
+
+### Results Display
+![Results Page](frontend_images/results.png)
+
 ## Setup Instructions
 
 1. Clone the repository:
